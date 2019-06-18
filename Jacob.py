@@ -19,13 +19,13 @@ Graph.add_nodes_from(nodes)
 Graph.add_edges_from(edges)
 
 #Adjacency Matrix
-adjacency_matrix = nx.to_numpy_matrix(Graph)
+#adjacency_matrix = nx.to_numpy_matrix(Graph)
 
 #Adjacency List
 adjacency_list = nx.to_dict_of_lists(Graph)
 
 
-#しまさん(23)から私(21)まで何ステップで辿り着けるか
+#How many steps would it take to reach Mr.Shimazu(23) from me(21)?
 def BFS(Start, Goal):
     Step = 1
     Q = []
@@ -36,7 +36,7 @@ def BFS(Start, Goal):
         Q.append(i)
         Checked.append(i)
     length.append(len(Q))
-    print("Original Q: " + str(Q))
+    #print("Original Q: " + str(Q))
 
     while len(Q) > 0:
         if Q[0] == Goal:
