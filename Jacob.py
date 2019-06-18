@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib.pyplot as plt
 import networkx as nx
 
 links = np.loadtxt(".gitignore/links.txt", delimiter='\t', dtype=int)
