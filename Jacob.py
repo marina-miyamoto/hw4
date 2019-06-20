@@ -23,46 +23,28 @@ Graph.add_edges_from(edges)
 #Adjacency List
 adjacency_list = nx.to_dict_of_lists(Graph)
 
-
 #How many steps would it take to reach Mr.Shimazu(23) from me(21)?
 def BFS(Start, Goal):
-    Step = 1
     Q = []
-    Checked = []
-    length = []
+    Checked = set()
 
     for i in adjacency_list[Start]:
-        Q.append(i)
-        Checked.append(i)
-    length.append(len(Q))
-    #print("Original Q: " + str(Q))
+        Q.append((i, 1))
+        Checked.add(i)
+    print("Original Q: " + str(Q))
 
     while len(Q) > 0:
-        if Q[0] == Goal:
-            print("Steps: " + str(Step))
+        if Q[0][0] == Goal:
+            print(Q[0][1])
             break
         else:
-            count = 0
-            for k in adjacency_list[Q[0]]:
+            for k in adjacency_list[Q[0][0]]:
                 if k not in Checked:
-                    Q.append(k)
-                    Checked.append(k)
-                    count += 1
+                    Q.append((k, Q[0][1] + 1))
             Q.pop(0) 
-
-            if count == 0:
-                pass
-            else:
-                length.append(count)
-    
-
-            length[0] -= 1
-            if length[0] <= 0:
-                length.pop(0)
-                Step += 1
 
 
         
-BFS(23, 21)
+BFS(0, 16)
 
 
